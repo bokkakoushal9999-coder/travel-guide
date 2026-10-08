@@ -11,9 +11,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt gunicorn
 
-# Copy application files
-COPY Backend/ Backend/
-COPY Frontend/ Frontend/
+# Copy all application files
+COPY . .
 
 ENV PYTHONUNBUFFERED=1
 ENV PORT=5000
