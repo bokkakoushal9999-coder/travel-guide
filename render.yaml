@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: travel-guide-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --chdir Backend app:app --workers 2 --timeout 120
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: MURF_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash
